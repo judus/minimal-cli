@@ -26,7 +26,7 @@ class Modules
 
     protected function all()
     {
-        $modules = $this->minimal->getFactory()->getModules()->getArray();
+        $modules = $this->minimal->getModules()->all();
 
         $array = [];
 
