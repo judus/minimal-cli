@@ -2,21 +2,13 @@
 
 namespace Maduser\Minimal\Cli;
 
-use Maduser\Minimal\Framework\Minimal;
+use Maduser\Minimal\Framework\Facades\Config as Cfg;
 
 class Config
 {
-    /**
-     * @var Minimal
-     */
-    private $minimal;
-
-    public function __construct(Minimal $minimal)
+    public function __construct()
     {
         $this->console = new Console();
-
-        /** @var Minimal minimal */
-        $this->minimal = $minimal;
 
         $this->all();
     }
@@ -26,7 +18,7 @@ class Config
         $thead = [['Alias', 'Value']];
         $tbody = [];
 
-        $items = $this->array_flat($this->minimal->getConfig()->getItems());
+        $items = $this->array_flat(Cfg::items());
 
         foreach ($items as $key => $value) {
             $tbody[] = [$key, $value];

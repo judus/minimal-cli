@@ -7,17 +7,9 @@ use Maduser\Minimal\Framework\Minimal;
 
 class Bindings
 {
-    /**
-     * @var Minimal
-     */
-    private $minimal;
-
-    public function __construct(Minimal $minimal)
+    public function __construct()
     {
         $this->console = new Console();
-
-        /** @var Minimal minimal */
-        $this->minimal = $minimal;
 
         $this->all();
     }
@@ -27,7 +19,7 @@ class Bindings
         $thead = [['Alias', 'Binding']];
         $tbody = [];
 
-        $items = IOC::config('bindings');
+        $items = IOC::bindings()->getArray();
 
         foreach ($items as $key => $value) {
             $tbody[] = [$key, $value];

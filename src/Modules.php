@@ -9,24 +9,16 @@ use Maduser\Minimal\Framework\Module;
 
 class Modules
 {
-    /**
-     * @var Minimal
-     */
-    private $minimal;
-
-    public function __construct($minimal)
+    public function __construct()
     {
         $this->console = new Console();
-
-        /** @var Minimal minimal */
-        $this->minimal = $minimal;
 
         $this->all();
     }
 
     protected function all()
     {
-        $modules = $this->minimal->getModules()->all();
+        $modules = \Maduser\Minimal\Framework\Facades\Modules::getModules();
 
         $array = [];
 

@@ -7,17 +7,9 @@ use Maduser\Minimal\Framework\Minimal;
 
 class Providers
 {
-    /**
-     * @var Minimal
-     */
-    private $minimal;
-
-    public function __construct(Minimal $minimal)
+    public function __construct()
     {
         $this->console = new Console();
-
-        /** @var Minimal minimal */
-        $this->minimal = $minimal;
 
         $this->all();
     }
@@ -27,7 +19,7 @@ class Providers
         $thead = [['Alias', 'Provider']];
         $tbody = [];
 
-        $items = IOC::config('providers');
+        $items = IOC::providers()->getArray();
 
         foreach ($items as $key => $value) {
             $tbody[] = [$key, $value];
