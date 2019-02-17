@@ -3,30 +3,22 @@
 namespace Maduser\Minimal\Cli;
 
 use Maduser\Minimal\Collections\Collection;
+use Maduser\Minimal\Framework\Facades\Router;
 use Maduser\Minimal\Framework\Minimal;
 use Maduser\Minimal\Routing\Route;
 
 class Routes
 {
-    /**
-     * @var Minimal
-     */
-    private $minimal;
-
-
-    public function __construct(Minimal $minimal)
+    public function __construct()
     {
         $this->console = new Console();
-
-        /** @var Minimal minimal */
-        $this->minimal = $minimal;
 
         $this->all();
     }
 
     protected function all()
     {
-        $router = $this->minimal->getRouter();
+        $router = Router::getInstance();
 
         /** @var Collection $routes */
         $routes = $router->getRoutes();
@@ -62,7 +54,4 @@ class Routes
         );
 
     }
-
-
-
 }

@@ -35,6 +35,7 @@ class Console
             $str = '|';
             $colIndex = 0;
             foreach ($row as $col) {
+                !is_object($col) || $col = get_class($col);
                 $str .= ' ' . $this->pad($col, $widths[$colIndex], ' ') . ' |';
                 $colIndex++;
             }
@@ -47,22 +48,19 @@ class Console
 
     }
 
-    public function pad($str, $length, $ph = ' ')
+    public function pad(string $str, int $length, string $ph = ' ') : string
     {
         return str_pad($str, $length, $ph);
     }
 
     public function getColWidths($data)
     {
-        //var_dump($data);
-
-
         $widths = [];
 
         foreach ($data as $row) {
             $colIndex = 0;
             foreach ($row as $col) {
-
+                ! is_object($col) || $col = get_class($col);
                 if (!isset($widths[$colIndex]) || strlen($col) > $widths[$colIndex]) {
                     $widths[$colIndex] = strlen($col);
                 }

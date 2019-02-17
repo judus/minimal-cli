@@ -8,7 +8,6 @@ class Cli
             $params = isset($args[1]) ? array_slice($args, 1) : [];
             $this->execute($args[0], [$minimal] + $params);
         }
-
     }
 
     private function execute($class, $params)
