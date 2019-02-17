@@ -22,7 +22,7 @@
     "minimal/minimal": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "4.*"
+    "phpunit/phpunit": "^8.0"
   },
   "autoload-dev": {
     "psr-4": {
